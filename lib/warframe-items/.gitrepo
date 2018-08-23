@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/WFCD/warframe-items
+	branch = development
+	commit = 8bb760a9587a67adfb9e36ea688313e7e16834f4
+	parent = 65dd9b9fb0c6b58b359bd9fca56f9fbd159c63aa
+	cmdver = 0.3.1
