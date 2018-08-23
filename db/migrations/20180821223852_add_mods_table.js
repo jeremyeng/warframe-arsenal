@@ -1,8 +1,8 @@
-exports.up = function(knex, Promise) {
-  return knex.schema.hasTable('mods').then(function(exists) {
+exports.up = function addModsTableUp(knex, Promise) {
+  return knex.schema.hasTable('mods').then((exists) => {
     if (!exists) {
       return knex.schema
-        .createTable('mods', function(t) {
+        .createTable('mods', (t) => {
           t.increments('mod_id').primary();
           t.string('mod_name').notNullable();
           t.text('mod_description').notNullable();
@@ -12,13 +12,13 @@ exports.up = function(knex, Promise) {
           t.string('type');
           t.string('image_name');
         })
-        .alterTable('mods', function(t) {
+        .alterTable('mods', (t) => {
           t.unique('mod_name');
         });
     }
   });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function addModsTableDown(knex, Promise) {
   return knex.schema.dropTableIfExists('mods');
 };
