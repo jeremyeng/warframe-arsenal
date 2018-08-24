@@ -1,4 +1,4 @@
-exports.up = function addModsTableUp(knex, Promise) {
+exports.up = function addModsTableUp(knex) {
   return knex.schema.hasTable('mods').then((exists) => {
     if (!exists) {
       return knex.schema
@@ -19,6 +19,6 @@ exports.up = function addModsTableUp(knex, Promise) {
   });
 };
 
-exports.down = function addModsTableDown(knex, Promise) {
+exports.down = function addModsTableDown(knex) {
   return knex.schema.dropTableIfExists('mods');
 };
