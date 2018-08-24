@@ -24,4 +24,7 @@ const modPromises = mods.map((mod) => {
   }
 });
 
-Promise.all(modPromises).then(() => process.exit(0));
+Promise.all(modPromises).catch((error) => {
+  console.log(error);
+  process.exit(1);
+});
