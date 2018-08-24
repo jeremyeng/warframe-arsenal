@@ -2,13 +2,13 @@ import knex from '../db/knex';
 import mods from '../lib/warframe-items/data/json/Mods.json';
 
 const modPromises = mods.map((mod) => {
-  if (mod.name && mod.description && mod.baseDrain && mod.fusionLimit) {
+  if (mod.name && mod.description && mod.baseDrain && mod.fusionLimit && mod.stats) {
     return knex.raw(
       `
-        INSERT INTO mods (mod_name, mod_description, base_drain, fusion_limit, type, image_name)
-        VALUES (:mod_name, :mod_description, :base_drain, :fusion_limit, :type, :image_name)
+        INSERT INTO mods (mod_name, mod_description, base_drain, fusion_limit, mod_data, type, image_name)
+        VALUES (:mod_name, :mod_description, :base_drain, :fusion_limit, :mod_data, :type, :image_name)
         ON CONFLICT (mod_name)
-        DO UPDATE SET (mod_description, base_drain, fusion_limit, type, image_name) = (:mod_description, :base_drain, :fusion_limit, :type, :image_name)
+        DO UPDATE SET (mod_description, base_drain, fusion_limit, mod_data, type, image_name) = (:mod_description, :base_drain, :fusion_limit, :mod_data, :type, :image_name)
         WHERE mods.mod_name = :mod_name;
         `,
       {
@@ -16,6 +16,7 @@ const modPromises = mods.map((mod) => {
         mod_description: mod.description,
         base_drain: mod.baseDrain,
         fusion_limit: mod.fusionLimit,
+        mod_data: mod.stats,
         type: mod.type,
         image_name: mod.imageName,
       },
