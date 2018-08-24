@@ -8,7 +8,7 @@ exports.up = function addModsTableUp(knex, Promise) {
           t.text('mod_description').notNullable();
           t.integer('base_drain').notNullable();
           t.integer('fusion_limit').notNullable();
-          t.jsonb('effect');
+          t.jsonb('mod_data');
           t.string('type');
           t.string('image_name');
         })
