@@ -4,16 +4,16 @@ exports.up = function addPolaritiesTableUp(knex) {
       return knex.schema
         .createTable('polarities', (t) => {
           t.increments('polarity_id').primary();
-          t.string('polarity_name').notNullable();
+          t.string('name').notNullable();
         })
         .then(() => knex('polarities').insert([
-          { polarity_name: 'madurai' },
-          { polarity_name: 'zenurik' },
-          { polarity_name: 'vazarin' },
-          { polarity_name: 'unairu' },
-          { polarity_name: 'naramon' },
-          { polarity_name: 'penjaga' },
-          { polarity_name: 'umbra' },
+          { name: 'madurai' },
+          { name: 'zenurik' },
+          { name: 'vazarin' },
+          { name: 'unairu' },
+          { name: 'naramon' },
+          { name: 'penjaga' },
+          { name: 'umbra' },
         ]));
     }
   });
