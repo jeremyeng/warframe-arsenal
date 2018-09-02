@@ -5,7 +5,7 @@ exports.up = function addModsTableUp(knex) {
         .createTable('mods', (t) => {
           t.increments('mod_id').primary();
           t.string('name').notNullable();
-          t.text('description').notNullable();
+          t.text('description');
           t.integer('base_drain').notNullable();
           t.integer('fusion_limit').notNullable();
           t.jsonb('data');
