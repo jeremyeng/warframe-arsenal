@@ -4,7 +4,7 @@ exports.up = function addPolaritiesTableUp(knex) {
       return knex.schema
         .createTable('polarities', (t) => {
           t.increments('polarity_id').primary();
-          t.string('name').notNullable();
+          t.string('name').notNullable().unique();
         })
         .then(() => knex('polarities').insert([
           { name: 'madurai' },
