@@ -1,6 +1,7 @@
 {
     "extends": "airbnb",
     "rules": {
-        "consistent-return": "off"
+        "consistent-return": "off",
+        "import/no-unresolved": "off"
     }
 }
