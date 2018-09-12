@@ -1,7 +1,24 @@
-import * as nodemon from 'nodemon';
-import dotenv from 'dotenv';
+import 'app-module-path/cwd';
+import express from 'express';
+import cors from 'cors';
+import { ApolloServer } from 'apollo-server-express';
+import schema from 'src/schema';
+import resolvers from 'src/resolvers';
+import knex from 'db/knex';
 
-dotenv.config();
+const app = express();
+app.use(cors());
 
-console.log('Hello warframe arsenal!');
-console.log(process.env.DATABASE_PASSWORD);
+const server = new ApolloServer({
+  typeDefs: schema,
+  resolvers,
+  context: {
+    knex,
+  },
+});
+
+server.applyMiddleware({ app, path: '/graphql' });
+
+app.listen({ port: 8000 }, () => {
+  console.log('Apollo Server on http://localhost:8000/graphql');
+});
