@@ -1,7 +1,7 @@
-import knexConfig from '../knexfile';
 import knex from 'knex';
+import knexConfig from '../knexfile';
 
-var environment = process.env.NODE_ENV || 'development';
-var config = knexConfig[environment];
+const environment = process.env.NODE_ENV || 'development';
+const config = knexConfig[environment];
 
 export default knex(config);
