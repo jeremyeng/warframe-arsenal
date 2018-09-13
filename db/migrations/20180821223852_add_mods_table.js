@@ -4,16 +4,13 @@ exports.up = function addModsTableUp(knex) {
       return knex.schema
         .createTable('mods', (t) => {
           t.increments('mod_id').primary();
-          t.string('name').notNullable();
+          t.string('name').notNullable().unique();
           t.text('description').notNullable();
           t.integer('base_drain').notNullable();
           t.integer('fusion_limit').notNullable();
           t.jsonb('data');
           t.string('type');
           t.string('image_name');
-        })
-        .alterTable('mods', (t) => {
-          t.unique('name');
         });
     }
   });
