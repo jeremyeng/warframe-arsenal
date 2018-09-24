@@ -3,5 +3,8 @@
     "rules": {
         "consistent-return": "off",
         "import/no-unresolved": "off"
+    },
+    "env": {
+        "jest": true
     }
 }
