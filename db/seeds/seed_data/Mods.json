@@ -9674,8 +9674,7 @@
       }
     ],
     "stats": {
-      "damageMultiplier": [ "+150%", "+175%", "+200%", "+225%", "+250%", "+275%" ],
-      "drain": [ "6", "7", "8", "9", "10", "11" ]
+      "damageMultiplier": [ "+150%", "+175%", "+200%", "+225%", "+250%", "+275%" ]
     }
   },
   {
@@ -16711,6 +16710,7 @@
       }
     ],
     "stats": {
+      "[[[Mod#ModRank|Rank]]": [ "0", "1", "2", "3" ],
       "damageBonusPerHit": [ "3%", "3%", "4%", "5%" ],
       "duration": [ "6s", "8s", "10s", "12s" ]
     }
@@ -25814,20 +25814,6 @@
     }
   },
   {
-    "uniqueName": "/Lotus/Upgrades/Mods/TransmuteCores/AttackTransmuteCore",
-    "name": "Madurai Transmute Core",
-    "polarity": "Madurai",
-    "rarity": "Rare",
-    "baseDrain": 0,
-    "fusionLimit": 0,
-    "description": "Ensures transmuted mod is of Madurai polarity and eliminates credit cost.",
-    "type": "---",
-    "imageName": "madurai-transmute-core.jpeg",
-    "category": "Mods",
-    "tradable": true,
-    "stats": {}
-  },
-  {
     "uniqueName": "/Lotus/Upgrades/Mods/PvPMods/Stances/PvPNunchakuStanceOne",
     "name": "Mafic Rain",
     "polarity": "Vazarin",
@@ -29223,20 +29209,6 @@
       "statusChance": [ "+15%", "+30%", "+45%", "+60%", "+75%", "+90%" ],
       "duration": [ "1.5s", "3s", "4.5s", "6s", "7.5s", "9s" ]
     }
-  },
-  {
-    "uniqueName": "/Lotus/Upgrades/Mods/TransmuteCores/TacticTransmuteCore",
-    "name": "Naramon Transmute Core",
-    "polarity": "Naramon",
-    "rarity": "Rare",
-    "baseDrain": 0,
-    "fusionLimit": 0,
-    "description": "Ensures transmuted mod is of Naramon polarity and eliminates credit cost.",
-    "type": "---",
-    "imageName": "naramon-transmute-core.jpeg",
-    "category": "Mods",
-    "tradable": true,
-    "stats": {}
   },
   {
     "uniqueName": "/Lotus/Upgrades/Mods/Shotgun/Event/AccuracyWhileAimingShotgunMod",
@@ -34904,6 +34876,22 @@
     }
   },
   {
+    "uniqueName": "/Lotus/Upgrades/Mods/Shotgun/Expert/WeaponElectricityDamageModExpert",
+    "name": "Primed Charged Shell",
+    "polarity": "Naramon",
+    "rarity": "Legendary",
+    "baseDrain": 6,
+    "fusionLimit": 10,
+    "description": "+15% <DT_ELECTRICITY>Electricity",
+    "type": "Shotgun",
+    "imageName": "primed-charged-shell.jpeg",
+    "category": "Mods",
+    "tradable": true,
+    "stats": {
+      "effect": [ "+15%", "+30%", "+45%", "+60%", "+75%", "+90%", "+105%", "+120%", "+135%", "+150%", "+165%" ]
+    }
+  },
+  {
     "uniqueName": "/Lotus/Upgrades/Mods/Warframe/Expert/AvatarAbilityDurationModExpert",
     "name": "Primed Continuity",
     "polarity": "Madurai",
@@ -37423,7 +37411,7 @@
     "rarity": "Rare",
     "baseDrain": 6,
     "fusionLimit": 3,
-    "description": "Blazing Chakram Augment: The chakram flies through enemies. Each enemy hit increases its damage and healing by 1.25x.",
+    "description": "Blazing Chakram Augment: Each enemy hit increases the ring's Damage by 1.25x and the chance for enemies to drop Health Orbs on death by +0.10x.",
     "type": "Warframe",
     "imageName": "reaping-chakram.jpeg",
     "category": "Mods",
@@ -37448,7 +37436,8 @@
       }
     ],
     "stats": {
-      "damage/HealingMultiplier": [ "1.25x", "1.50x", "1.75x", "2.00x" ]
+      "damage": [ "1.25x", "1.50x", "1.75x", "2.00x" ],
+      "healthOrbDropChance": [ "0.10x", "0.15x", "0.20x", "0.25x" ]
     }
   },
   {
@@ -41711,9 +41700,10 @@
     "category": "Mods",
     "tradable": true,
     "stats": {
-      "effect(Rank1)": [ "+10%", "+20%", "+30%", "+40%", "+50%", "+60%", "+70%", "+80%", "+90%", "+100%", "+110%" ],
-      "effect(Rank2)": [ "+12.5%", "+25%", "+37.5%", "+50%", "+62.5%", "+75%", "+87.5%", "+100%", "+112.5%", "+125%", "+137.5%" ],
-      "sentientDamageBonus": [ "+3%", "+6%", "+9%", "+12%", "+15%", "+18%", "+21%", "+24%", "+27%", "+30%", "+33%" ]
+      "meleeDamage(SetBonusLevel1)": [ "+10%", "+20%", "+30%", "+40%", "+50%", "+60%", "+70%", "+80%", "+90%", "+100%", "+110%" ],
+      "sentientDamageBonus(SetBonusLevel1)": [ "+3%", "+6%", "+9%", "+12%", "+15%", "+18%", "+21%", "+24%", "+27%", "+30%", "+33%" ],
+      "meleeDamage(SetBonusLevel2)": [ "+12.5%", "+25%", "+37.5%", "+50%", "+62.5%", "+75%", "+87.5%", "+100%", "+112.5%", "+125%", "+137.5%" ],
+      "sentientDamageBonus(SetBonusLevel2)": [ "+3.8%", "+7.5%", "+11.3%", "+15%", "+18.8%", "+22.5%", "+26.3%", "+30%", "+33.8%", "+37.5%", "+41.3%" ]
     }
   },
   {
@@ -41729,9 +41719,10 @@
     "category": "Mods",
     "tradable": true,
     "stats": {
-      "effect(Rank1)": [ "+8%", "+16%", "+24%", "+32%", "+40%", "+48%", "+56%", "+64%", "+72%", "+80%", "+88%" ],
-      "effect(Rank2)": [ "+10%", "+20%", "+30%", "+40%", "+50%", "+60%", "+70%", "+80%", "+90%", "+100%", "+110%" ],
-      "sentientDamageBonus": [ "+3%", "+6%", "+9%", "+12%", "+15%", "+18%", "+21%", "+24%", "+27%", "+30%", "+33%" ]
+      "criticalChance(SetBonusLevel1)": [ "+8%", "+16%", "+24%", "+32%", "+40%", "+48%", "+56%", "+64%", "+72%", "+80%", "+88%" ],
+      "sentientDamageBonus(SetBonusLevel1)": [ "+3%", "+6%", "+9%", "+12%", "+15%", "+18%", "+21%", "+24%", "+27%", "+30%", "+33%" ],
+      "criticalChance(SetBonusLevel2)": [ "+10%", "+20%", "+30%", "+40%", "+50%", "+60%", "+70%", "+80%", "+90%", "+100%", "+110%" ],
+      "sentientDamageBonus(SetBonusLevel2)": [ "+3.8%", "+7.5%", "+11.3%", "+15%", "+18.8%", "+22.5%", "+26.3%", "+30%", "+33.8%", "+37.5%", "+41.3%" ]
     }
   },
   {
@@ -56616,20 +56607,6 @@
       "range": [ "2.3m", "2.6m", "3.0m", "3.3m", "3.6m", "4.0m" ],
       "damage": [ "150", "300", "450", "600", "600", "600" ]
     }
-  },
-  {
-    "uniqueName": "/Lotus/Upgrades/Mods/TransmuteCores/DefenseTransmuteCore",
-    "name": "Vazarin Transmute Core",
-    "polarity": "Vazarin",
-    "rarity": "Rare",
-    "baseDrain": 0,
-    "fusionLimit": 0,
-    "description": "Ensures transmuted mod is of Vazarin polarity and eliminates credit cost.",
-    "type": "---",
-    "imageName": "vazarin-transmute-core.jpeg",
-    "category": "Mods",
-    "tradable": true,
-    "stats": {}
   },
   {
     "uniqueName": "/Lotus/Weapons/Tenno/Melee/MeleeTrees/StalkerSwordMeleeTree",
