@@ -24,10 +24,10 @@
   "name": "Extractor"
 }, {
   "id": "CatbrowPet",
-  "name": "Pets"
+  "name": "Kavat"
 }, {
   "id": "KubrowPet",
-  "name": "Pets"
+  "name": "Kubrow"
 }, {
   "id": "SpectreArmies",
   "name": "Specter"
@@ -58,9 +58,6 @@
 }, {
   "id": "SyndicateDogTags",
   "name": "Medallion"
-}, {
-  "id": "Focus",
-  "name": "Focus Lens"
 }, {
   "id": "Sentinels",
   "name": "Sentinel"

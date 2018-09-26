@@ -6,11 +6,11 @@ exports.seed = function seedModsDev(knex, Promise) {
     .del()
     .then(() => Promise.all(
       mods.map(mod => knex('mods').insert({
-        name: mod.name,
-        description: mod.description || '',
+        mod: mod.name,
+        description: mod.description,
         base_drain: mod.baseDrain,
         fusion_limit: mod.fusionLimit,
-        data: mod.stats || {},
+        data: mod.stats,
         type: mod.type,
         image_name: mod.imageName,
         polarity: mod.polarity.toLowerCase(),

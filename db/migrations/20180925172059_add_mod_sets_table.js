@@ -3,11 +3,11 @@ exports.up = function addModSetsTableUp(knex) {
     if (!exists) {
       return knex.schema.createTable('mod_sets', (t) => {
         t.increments('mod_set_id').primary();
-        t.string('name')
+        t.string('mod_set')
           .notNullable()
           .unique();
         t.string('description').notNullable();
-        t.specificType('data', "JSONB DEFAULT '[]'").notNullable();
+        t.jsonb('data').defaultTo('[]').notNullable();
       });
     }
   });

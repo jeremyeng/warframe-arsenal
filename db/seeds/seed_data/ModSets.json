@@ -1,0 +1,32 @@
+[
+  {
+    "mod_set": "Augur",
+    "description": "40% Energy spent on abilities is converted to shields",
+    "data": ["40%", "80%", "120%", "160%", "200%", "240%"]
+  },
+  {
+    "mod_set": "Gladiator",
+    "description": "15% Critical Chance stacks with Combo Multiplier",
+    "data": ["15%", "30%", "45%", "60%", "75%", "90%"]
+  },
+  {
+    "mod_set": "Vigilante",
+    "description": "5% chance to enhance Critical Hits from Primary Weapons",
+    "data": ["5%", "10%", "15%", "20%", "25%", "30%"]
+  },
+  {
+    "mod_set": "Hunter",
+    "description": "Companions deal 25% Extra Damage against enemies affected by Slash status",
+    "data": ["25%", "50%", "75%", "100%", "125%", "150%"]
+  },
+  {
+    "mod_set": "Umbral",
+    "description": "Enhances all equipped mods within the set",
+    "data": []
+  },
+  {
+    "mod_set": "Sacrificial",
+    "description": "Enhances all equipped mods within the set",
+    "data": []
+  }
+]
