@@ -9,7 +9,7 @@ export default gql`
   type Mod {
     id: ID!
     name: String!
-    description: String!
+    description: String
     baseDrain: Int!
     fusionLimit: Int!
     type: String

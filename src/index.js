@@ -5,6 +5,7 @@ import { ApolloServer } from 'apollo-server-express';
 import schema from 'src/schema';
 import resolvers from 'src/resolvers';
 import knex from 'db/knex';
+import loaders from 'src/loaders';
 
 const app = express();
 app.use(cors());
@@ -14,6 +15,7 @@ const server = new ApolloServer({
   resolvers,
   context: {
     knex,
+    loaders,
   },
 });
 
