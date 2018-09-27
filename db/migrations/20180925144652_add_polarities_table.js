@@ -2,9 +2,9 @@ exports.up = function addPolaritiesTableUp(knex) {
   return knex.schema.hasTable('polarities').then((exists) => {
     if (!exists) {
       return knex.schema
-        .createTable('polarities', (t) => {
-          t.increments('polarity_id').primary();
-          t.string('polarity').notNullable().unique();
+        .createTable('polarities', (table) => {
+          table.increments('polarity_id').primary();
+          table.string('polarity').notNullable().unique();
         });
     }
   });
