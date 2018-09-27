@@ -10,7 +10,8 @@
     "test-server": "NODE_ENV='test' nodemon src/index.js --exec babel-node",
     "import": "babel-node src/import.js",
     "refresh": "node lib/warframe-items/build/update.js",
-    "test": "jest"
+    "test": "jest",
+    "reset-db": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "keywords": [],
   "author": "",
