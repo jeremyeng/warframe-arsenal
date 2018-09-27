@@ -1,4 +1,4 @@
-exports.up = function addBuildablesTableUp(knex) {
+exports.up = function addBuildableTypesTableUp(knex) {
   return knex.schema.hasTable('buildable_types').then((exists) => {
     if (!exists) {
       return knex.schema.createTable('buildable_types', (table) => {
@@ -11,6 +11,6 @@ exports.up = function addBuildablesTableUp(knex) {
   });
 };
 
-exports.down = function addModsTableDown(knex) {
+exports.down = function addBuildableTypesTableDown(knex) {
   return knex.schema.dropTableIfExists('buildable_types');
 };
