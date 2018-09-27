@@ -1,16 +1,62 @@
 [
-  "Primary",
-  "Secondary",
-  "Melee",
-  "Rifle",
-  "Bow",
-  "Shotgun",
-  "Pistol",
-  "Stance",
-  "Aura",
-  "Warframe",
-  "Sentinel",
-  "Archwing",
-  "Kubrow",
-  "Kavat"
+  {
+    "modTypeId": 1,
+    "modType": "Primary"
+  },
+  {
+    "modTypeId": 2,
+    "modType": "Secondary"
+  },
+  {
+    "modTypeId": 3,
+    "modType": "Melee"
+  },
+  {
+    "modTypeId": 4,
+    "modType": "Rifle"
+  },
+  {
+    "modTypeId": 5,
+    "modType": "Bow"
+  },
+  {
+    "modTypeId": 6,
+    "modType": "Shotgun"
+  },
+  {
+    "modTypeId": 7,
+    "modType": "Pistol"
+  },
+  {
+    "modTypeId": 8,
+    "modType": "Stance"
+  },
+  {
+    "modTypeId": 9,
+    "modType": "Aura"
+  },
+  {
+    "modTypeId": 10,
+    "modType": "Warframe"
+  },
+  {
+    "modTypeId": 11,
+    "modType": "Sentinel"
+  },
+  {
+    "modTypeId": 12,
+    "modType": "Archwing"
+  },
+  {
+    "modTypeId": 13,
+    "modType": "Companion"
+  },
+  {
+    "modTypeId": 14,
+    "modType": "Kubrow"
+  },
+  {
+    "modTypeId": 15,
+    "modType": "Kavat"
+  }
 ]

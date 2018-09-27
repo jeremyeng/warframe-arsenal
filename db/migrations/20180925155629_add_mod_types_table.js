@@ -3,7 +3,7 @@ exports.up = function addModTypesTableUp(knex) {
     if (!exists) {
       return knex.schema
         .createTable('mod_types', (t) => {
-          t.increments('mod_type_id').primary();
+          t.integer('mod_type_id').primary();
           t.string('mod_type').notNullable().unique();
         });
     }
