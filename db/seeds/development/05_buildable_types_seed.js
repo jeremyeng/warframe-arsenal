@@ -1,6 +1,6 @@
 const buildableTypes = require('../seed_data/BuildableTypes.json');
 
-exports.seed = function seedBuildableTypes(knex, Promise) {
+exports.seed = function seedBuildableTypesDev(knex, Promise) {
   // Deletes ALL existing entries
   return knex('buildable_types')
     .del()

@@ -1,6 +1,6 @@
 const warframes = require('../seed_data/Warframes.json');
 
-exports.seed = function seedModsDev(knex, Promise) {
+exports.seed = function seedWarframesDev(knex, Promise) {
   // Deletes ALL existing entries
   return knex('warframes')
     .del()
