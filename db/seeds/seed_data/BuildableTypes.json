@@ -1,0 +1,22 @@
+[
+  {
+    "buildableTypeId": 1,
+    "buildableType": "Warframe"
+  },
+  {
+    "buildableTypeId": 2,
+    "buildableType": "Weapon"
+  },
+  {
+    "buildableTypeId": 3,
+    "buildableType": "Archwing"
+  },
+  {
+    "buildableTypeId": 4,
+    "buildableType": "Pet"
+  },
+  {
+    "buildableTypeId": 5,
+    "buildableType": "Sentinel"
+  }
+]
