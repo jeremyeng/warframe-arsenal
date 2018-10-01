@@ -3,8 +3,7 @@ exports.up = function addPolaritiesTableUp(knex) {
     if (!exists) {
       return knex.schema
         .createTable('polarities', (table) => {
-          table.increments('polarity_id').primary();
-          table.string('polarity').notNullable().unique();
+          table.string('polarity').primary();
         });
     }
   });
