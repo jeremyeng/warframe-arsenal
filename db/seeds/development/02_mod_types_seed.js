@@ -5,8 +5,7 @@ exports.seed = function seedModsDev(knex, Promise) {
   return knex('mod_types')
     .del()
     .then(() => Promise.all(
-      modTypes.map(({ modTypeId, modType }) => knex('mod_types').insert({
-        mod_type_id: modTypeId,
+      modTypes.map(modType => knex('mod_types').insert({
         mod_type: modType,
       })),
     ));

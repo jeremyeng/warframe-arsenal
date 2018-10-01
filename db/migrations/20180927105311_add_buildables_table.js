@@ -4,11 +4,11 @@ exports.up = function addBuildablesTableUp(knex) {
       return knex.schema
         .createTable('buildables', (table) => {
           table.specificType('buildable_id', 'serial');
-          table.integer('buildable_type_id')
-            .references('buildable_type_id')
+          table.string('buildable_type')
+            .references('buildable_type')
             .inTable('buildable_types')
             .onUpdate('CASCADE');
-          table.primary(['buildable_id', 'buildable_type_id']);
+          table.primary(['buildable_id', 'buildable_type']);
         });
     }
   });

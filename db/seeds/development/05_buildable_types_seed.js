@@ -5,8 +5,7 @@ exports.seed = function seedBuildableTypesDev(knex, Promise) {
   return knex('buildable_types')
     .del()
     .then(() => Promise.all(
-      buildableTypes.map(({ buildableTypeId, buildableType }) => knex('buildable_types').insert({
-        buildable_type_id: buildableTypeId,
+      buildableTypes.map(buildableType => knex('buildable_types').insert({
         buildable_type: buildableType,
       })),
     ));

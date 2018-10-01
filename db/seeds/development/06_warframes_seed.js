@@ -6,7 +6,7 @@ exports.seed = function seedWarframesDev(knex, Promise) {
     .del()
     .then(() => Promise.all(
       warframes.map(warframe => knex('buildables')
-        .insert({ buildable_type_id: 1 })
+        .insert({ buildable_type: 'Warframe' })
         .returning('buildable_id')
         .then(([buildableId]) => knex('warframes').insert({
           buildable_id: buildableId,

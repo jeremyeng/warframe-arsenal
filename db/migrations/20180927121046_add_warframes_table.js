@@ -4,7 +4,7 @@ exports.up = function addWarframesTableUp(knex) {
       return knex.schema.raw(`
         CREATE TABLE warframes (
           buildable_id INTEGER PRIMARY KEY,
-          buildable_type_id INTEGER NOT NULL DEFAULT 1 CHECK (buildable_type_id = 1),
+          buildable_type TEXT NOT NULL DEFAULT 'Warframe' CHECK (buildable_type = 'Warframe'),
           name TEXT NOT NULL,
           description TEXT,
           health INTEGER NOT NULL,
@@ -13,10 +13,10 @@ exports.up = function addWarframesTableUp(knex) {
           energy INTEGER NOT NULL,
           sprint_speed DECIMAL NOT NULL,
           mastery_requirement INTEGER NOT NULL,
-          aura_polarity TEXT REFERENCES polarities (polarity),
+          aura_polarity TEXT REFERENCES polarities (polarity) ON UPDATE CASCADE,
           wikia_url TEXT,
           image_name TEXT,
-          FOREIGN KEY (buildable_id, buildable_type_id) REFERENCES buildables (buildable_id, buildable_type_id) 
+          FOREIGN KEY (buildable_id, buildable_type) REFERENCES buildables (buildable_id, buildable_type) 
         );
       `);
     }
