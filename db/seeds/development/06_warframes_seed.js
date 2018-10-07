@@ -10,7 +10,7 @@ exports.seed = function seedWarframesDev(knex, Promise) {
         .returning('buildable_id')
         .then(([buildableId]) => knex('warframes').insert({
           buildable_id: buildableId,
-          name: warframe.name,
+          warframe: warframe.name,
           description: warframe.description,
           health: warframe.health,
           shield: warframe.shield,

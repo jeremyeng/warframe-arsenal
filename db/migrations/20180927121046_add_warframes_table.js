@@ -5,7 +5,7 @@ exports.up = function addWarframesTableUp(knex) {
         CREATE TABLE warframes (
           buildable_id INTEGER PRIMARY KEY,
           buildable_type TEXT NOT NULL DEFAULT 'Warframe' CHECK (buildable_type = 'Warframe'),
-          name TEXT NOT NULL,
+          warframe TEXT NOT NULL,
           description TEXT,
           health INTEGER NOT NULL,
           shield INTEGER NOT NULL,
