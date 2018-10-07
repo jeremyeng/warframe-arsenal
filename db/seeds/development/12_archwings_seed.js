@@ -10,7 +10,7 @@ exports.seed = function seedArchwingsDev(knex, Promise) {
         .returning('buildable_id')
         .then(([buildableId]) => knex('archwings').insert({
           buildable_id: buildableId,
-          name: archwing.name,
+          archwing: archwing.name,
           description: archwing.description,
           health: archwing.health,
           shield: archwing.shield,

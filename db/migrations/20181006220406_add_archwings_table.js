@@ -5,7 +5,7 @@ exports.up = function addArchwingsTableUp(knex) {
         CREATE TABLE archwings (
           buildable_id INTEGER PRIMARY KEY,
           buildable_type TEXT NOT NULL DEFAULT 'Archwing' CHECK (buildable_type = 'Archwing'),
-          name TEXT NOT NULL,
+          archwing TEXT NOT NULL,
           description TEXT,
           health INTEGER NOT NULL,
           shield INTEGER NOT NULL,
