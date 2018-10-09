@@ -1,4 +1,4 @@
-import modLoaders from './mod_loaders';
+import modLoaders from './mod';
 
 const loaders = {
   ...modLoaders,
