@@ -1,4 +1,4 @@
-const companions = require('../seed_data/Companions.json');
+const companions = require('./seed_data/Companions.json');
 
 exports.seed = function seedCompanionsDev(knex, Promise) {
   // Deletes ALL existing entries

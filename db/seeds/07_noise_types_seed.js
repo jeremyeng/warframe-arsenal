@@ -1,4 +1,4 @@
-const noiseTypes = require('../seed_data/NoiseTypes.json');
+const noiseTypes = require('./seed_data/NoiseTypes.json');
 
 exports.seed = function seedNoiseTypesDev(knex, Promise) {
   // Deletes ALL existing entries

@@ -1,4 +1,4 @@
-const weaponTypes = require('../seed_data/WeaponTypes.json');
+const weaponTypes = require('./seed_data/WeaponTypes.json');
 
 exports.seed = function seedWeaponTypesDev(knex, Promise) {
   // Deletes ALL existing entries

@@ -1,4 +1,4 @@
-const sentinels = require('../seed_data/Sentinels.json');
+const sentinels = require('./seed_data/Sentinels.json');
 
 exports.seed = function seedSentinelsDev(knex, Promise) {
   // Deletes ALL existing entries

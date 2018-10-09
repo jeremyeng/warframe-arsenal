@@ -1,4 +1,4 @@
-const polarities = require('../seed_data/Polarities.json');
+const polarities = require('./seed_data/Polarities.json');
 
 exports.seed = function seedModsDev(knex, Promise) {
   // Deletes ALL existing entries

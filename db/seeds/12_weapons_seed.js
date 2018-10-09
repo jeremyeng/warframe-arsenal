@@ -1,6 +1,6 @@
-const primaries = require('../seed_data/Primary.json');
-const secondaries = require('../seed_data/Secondary.json');
-const melees = require('../seed_data/Melee.json');
+const primaries = require('./seed_data/Primary.json');
+const secondaries = require('./seed_data/Secondary.json');
+const melees = require('./seed_data/Melee.json');
 
 const weapons = primaries.concat(secondaries).concat(melees);
 

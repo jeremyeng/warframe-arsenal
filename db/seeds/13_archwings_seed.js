@@ -1,4 +1,4 @@
-const archwings = require('../seed_data/Archwing.json');
+const archwings = require('./seed_data/Archwing.json');
 
 exports.seed = function seedArchwingsDev(knex, Promise) {
   // Deletes ALL existing entries

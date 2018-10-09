@@ -1,4 +1,4 @@
-const triggerTypes = require('../seed_data/TriggerTypes.json');
+const triggerTypes = require('./seed_data/TriggerTypes.json');
 
 exports.seed = function seedtriggerTypesDev(knex, Promise) {
   // Deletes ALL existing entries

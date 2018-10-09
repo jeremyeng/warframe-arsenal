@@ -1,4 +1,4 @@
-const projectileTypes = require('../seed_data/ProjectileTypes.json');
+const projectileTypes = require('./seed_data/ProjectileTypes.json');
 
 exports.seed = function seedProjectileTypesDev(knex, Promise) {
   // Deletes ALL existing entries

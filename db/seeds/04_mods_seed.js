@@ -1,4 +1,4 @@
-const mods = require('../seed_data/Mods.json');
+const mods = require('./seed_data/Mods.json');
 
 exports.seed = function seedModsDev(knex, Promise) {
   // Deletes ALL existing entries

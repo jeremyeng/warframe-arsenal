@@ -1,4 +1,4 @@
-const companionTypes = require('../seed_data/CompanionTypes.json');
+const companionTypes = require('./seed_data/CompanionTypes.json');
 
 exports.seed = function seedCompanionTypesDev(knex, Promise) {
   // Deletes ALL existing entries
