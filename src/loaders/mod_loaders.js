@@ -1,5 +1,5 @@
 import DataLoader from 'dataloader';
-import knex from 'db/knex';
+import knex from '../../db/knex';
 
 const modLoaders = {
   modById: new DataLoader(ids => knex
