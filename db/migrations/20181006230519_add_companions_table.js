@@ -3,7 +3,7 @@ exports.up = function addCompanionsTableUp(knex) {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE companions (
-          buildable_id INTEGER PRIMARY KEY,
+          buildable_id INTEGER,
           buildable_type TEXT NOT NULL DEFAULT 'Companion' CHECK (buildable_type = 'Companion'),
           companion_type TEXT NOT NULL REFERENCES companion_types (companion_type),
           companion TEXT NOT NULL,

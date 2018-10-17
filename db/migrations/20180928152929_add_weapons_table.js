@@ -3,7 +3,7 @@ exports.up = function addWeaponsTableUp(knex) {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE weapons (
-          buildable_id INTEGER PRIMARY KEY,
+          buildable_id INTEGER,
           buildable_type TEXT NOT NULL DEFAULT 'Weapon' CHECK (buildable_type='Weapon'),
           weapon TEXT,
           description TEXT,
