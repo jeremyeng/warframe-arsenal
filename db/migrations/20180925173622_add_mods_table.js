@@ -10,7 +10,7 @@ exports.up = function addModsTableUp(knex) {
         table.integer('base_drain').notNullable();
         table.integer('fusion_limit').notNullable();
         table.jsonb('data');
-        table.string('type')
+        table.string('mod_type')
           .notNullable()
           .references('mod_type')
           .inTable('mod_types')

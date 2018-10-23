@@ -11,7 +11,7 @@ exports.seed = function seedModsDev(knex, Promise) {
         base_drain: mod.baseDrain,
         fusion_limit: mod.fusionLimit,
         data: mod.stats,
-        type: mod.type,
+        mod_type: mod.type,
         image_name: mod.imageName,
         polarity: mod.polarity.toLowerCase(),
       })),
