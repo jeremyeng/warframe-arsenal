@@ -2,10 +2,11 @@ const mods = require('./seed_data/Mods.json');
 
 exports.seed = function seedModsDev(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('mods')
-    .del()
-    .then(() => Promise.all(
-      mods.map(mod => knex('mods').insert({
+
+  return knex.transaction(trx => Promise.all(
+    mods.map(mod => trx('mods')
+      .del()
+      .insert({
         mod: mod.name,
         description: mod.description,
         base_drain: mod.baseDrain,
@@ -15,5 +16,5 @@ exports.seed = function seedModsDev(knex, Promise) {
         image_name: mod.imageName,
         polarity: mod.polarity.toLowerCase(),
       })),
-    ));
+  ));
 };

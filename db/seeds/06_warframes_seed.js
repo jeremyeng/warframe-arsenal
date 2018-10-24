@@ -2,13 +2,14 @@ const warframes = require('./seed_data/Warframes.json');
 
 exports.seed = function seedWarframesDev(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('warframes')
+
+  return knex.transaction(trx => trx('warframes')
     .del()
     .then(() => Promise.all(
-      warframes.map(warframe => knex('buildables')
+      warframes.map(warframe => trx('buildables')
         .insert({ buildable_type: 'Warframe' })
         .returning('buildable_id')
-        .then(([buildableId]) => knex('warframes').insert({
+        .then(([buildableId]) => trx('warframes').insert({
           buildable_id: buildableId,
           warframe: warframe.name,
           description: warframe.description,
@@ -22,5 +23,5 @@ exports.seed = function seedWarframesDev(knex, Promise) {
           wikia_url: warframe.wikiaUrl,
           image_name: warframe.imageName,
         }))),
-    ));
+    )));
 };
