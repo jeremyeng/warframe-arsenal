@@ -1,18 +1,27 @@
 const primaries = require('./seed_data/Primary.json');
 const secondaries = require('./seed_data/Secondary.json');
 const melees = require('./seed_data/Melee.json');
+const archwingPrimaries = require('./seed_data/Archwing Primary.json');
+const archwingMelees = require('./seed_data/Archwing Melee.json');
+const sentinelPrimaries = require('./seed_data/Sentinel Primary.json');
 
-const weapons = primaries.concat(secondaries).concat(melees);
+const weapons = primaries
+  .concat(secondaries)
+  .concat(melees)
+  .concat(archwingPrimaries)
+  .concat(archwingMelees)
+  .concat(sentinelPrimaries);
 
 exports.seed = function seedWeaponsDev(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('weapons')
+
+  return knex.transaction(trx => trx('weapons')
     .del()
     .then(() => Promise.all(
-      weapons.map(weapon => knex('buildables')
+      weapons.map(weapon => trx('buildables')
         .insert({ buildable_type: 'Weapon' })
         .returning('buildable_id')
-        .then(([buildableId]) => knex('weapons').insert({
+        .then(([buildableId]) => trx('weapons').insert({
           buildable_id: buildableId,
           weapon: weapon.name,
           description: weapon.description,
@@ -59,9 +68,6 @@ exports.seed = function seedWeaponsDev(knex, Promise) {
           secondary: weapon.secondary || weapon.secondaryArea,
           wikia_thumbnail: weapon.wikiaThumbnail,
           wikia_url: weapon.wikiaUrl,
-        }))
-        .catch((error) => {
-          Promise.reject(error);
-        })),
-    ));
+        }))),
+    )));
 };
