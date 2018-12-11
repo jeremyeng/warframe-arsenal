@@ -4,10 +4,13 @@ exports.up = function addBuildModSlotsTableUp(knex) {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE build_mod_slots (
+          build_mod_slot_id SERIAL PRIMARY KEY,
           build_id INTEGER NOT NULL REFERENCES builds (build_id),
-          mod_id INTEGER NOT NULL REFERENCES mods (mod_id),
           slot_polarity TEXT NOT NULL REFERENCES polarities (polarity) ON UPDATE CASCADE,
-          PRIMARY KEY (build_id, mod_id)
+          mod_id INTEGER NOT NULL REFERENCES mods (mod_id),
+          buildable_id INTEGER NOT NULL,
+          buildable_type TEXT NOT NULL,
+          FOREIGN KEY (buildable_id, buildable_type, mod_id) REFERENCES valid_buildable_mods ON DELETE CASCADE
         );
       `);
     }
