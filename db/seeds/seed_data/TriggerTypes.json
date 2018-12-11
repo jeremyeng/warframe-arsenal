@@ -1,10 +1,11 @@
 [
+  "Active",
+  "Auto Burst",
   "Auto",
   "Burst",
   "Charge",
   "Duplex",
   "Held",
-  "Active",
-  "Semi",
-  "Melee"
+  "Melee",
+  "Semi"
 ]
