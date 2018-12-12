@@ -1,18 +1,22 @@
+/* eslint-env node */
+
+'use strict';
+
 module.exports = {
-  extends: ['prettier', 'eslint:recommended', 'plugin:node/recommended'],
-  plugins: ['prettier', 'babel'],
-  parser: 'babel-eslint',
+  extends: ['eslint:recommended', 'prettier', 'plugin:node/recommended'],
+  parserOptions: {
+    ecmaVersion: 2017,
+    sourceType: 'module', // es6 import/export
+  },
+  parser: 'babel-eslint', // class properties
+  plugins: ['prettier'],
   rules: {
     'prettier/prettier': [
-      1,
+      'error',
       {
-        semi: false,
         singleQuote: true,
         trailingComma: 'all',
       },
     ],
   },
-  env: {
-    jest: true,
-  },
-}
+};
