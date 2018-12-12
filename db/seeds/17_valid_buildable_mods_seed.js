@@ -34,8 +34,7 @@ function linkWeaponTypeWithModTypes(weaponType, modTypes, knex, Promise) {
 }
 
 exports.seed = (knex, Promise) => knex.transaction(trx => Promise.all(
-  linkTableWithModTypes('warframes', ['Warframe'], trx, Promise),
-  linkTableWithModTypes('warframes', ['Aura'], trx, Promise),
+  linkTableWithModTypes('warframes', ['Warframe', 'Aura'], trx, Promise),
   linkTableWithModTypes('sentinels', ['Sentinel'], trx, Promise),
   linkTableWithModTypes('companions', ['Companion'], trx, Promise),
   linkTableWithModTypes('archwings', ['Archwing'], trx, Promise),
