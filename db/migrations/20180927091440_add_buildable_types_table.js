@@ -1,7 +1,7 @@
 exports.up = function addBuildableTypesTableUp(knex) {
-  return knex.schema.hasTable('buildable_types').then((exists) => {
+  return knex.schema.hasTable('buildable_types').then(exists => {
     if (!exists) {
-      return knex.schema.createTable('buildable_types', (table) => {
+      return knex.schema.createTable('buildable_types', table => {
         table.string('buildable_type').primary();
       });
     }

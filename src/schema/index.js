@@ -16,5 +16,4 @@ const baseSchema = gql`
   }
 `;
 
-
 export default [baseSchema, jsonSchema, modSchema];

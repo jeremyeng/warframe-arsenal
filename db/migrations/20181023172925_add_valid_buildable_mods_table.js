@@ -1,6 +1,5 @@
-
 exports.up = function addValidBuildableModsTableUp(knex) {
-  return knex.schema.hasTable('valid_buildable_mods').then((exists) => {
+  return knex.schema.hasTable('valid_buildable_mods').then(exists => {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE valid_buildable_mods (

@@ -1,6 +1,5 @@
-
 exports.up = function addBuildsTableUp(knex) {
-  return knex.schema.hasTable('builds').then((exists) => {
+  return knex.schema.hasTable('builds').then(exists => {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE builds (

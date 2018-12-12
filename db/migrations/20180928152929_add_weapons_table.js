@@ -1,5 +1,5 @@
 exports.up = function addWeaponsTableUp(knex) {
-  return knex.schema.hasTable('weapons').then((exists) => {
+  return knex.schema.hasTable('weapons').then(exists => {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE weapons (

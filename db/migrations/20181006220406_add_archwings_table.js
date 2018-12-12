@@ -1,5 +1,5 @@
 exports.up = function addArchwingsTableUp(knex) {
-  return knex.schema.hasTable('archwings').then((exists) => {
+  return knex.schema.hasTable('archwings').then(exists => {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE archwings (

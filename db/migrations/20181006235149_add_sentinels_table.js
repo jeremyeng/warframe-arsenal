@@ -1,5 +1,5 @@
 exports.up = function addSentinelsTableUp(knex) {
-  return knex.schema.hasTable('sentinels').then((exists) => {
+  return knex.schema.hasTable('sentinels').then(exists => {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE sentinels (

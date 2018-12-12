@@ -5,10 +5,12 @@ import schema from '../src/schema';
 import resolvers from '../src/resolvers';
 import loaders from '../src/loaders';
 
-beforeAll(() => knex.migrate
-  .rollback()
-  .then(() => knex.migrate.latest())
-  .then(() => knex.seed.run()));
+beforeAll(() =>
+  knex.migrate
+    .rollback()
+    .then(() => knex.migrate.latest())
+    .then(() => knex.seed.run()),
+);
 
 afterAll(() => knex.migrate.rollback().then(() => knex.destroy()));
 

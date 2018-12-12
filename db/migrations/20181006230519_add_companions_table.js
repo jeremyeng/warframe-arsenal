@@ -1,5 +1,5 @@
 exports.up = function addCompanionsTableUp(knex) {
-  return knex.schema.hasTable('companions').then((exists) => {
+  return knex.schema.hasTable('companions').then(exists => {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE companions (

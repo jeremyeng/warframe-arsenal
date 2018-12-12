@@ -1,5 +1,5 @@
 exports.up = function addWarframesTableUp(knex) {
-  return knex.schema.hasTable('warframes').then((exists) => {
+  return knex.schema.hasTable('warframes').then(exists => {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE warframes (

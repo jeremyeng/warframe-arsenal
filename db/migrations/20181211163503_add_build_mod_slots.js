@@ -1,6 +1,5 @@
-
 exports.up = function addBuildModSlotsTableUp(knex) {
-  return knex.schema.hasTable('build_mod_slots').then((exists) => {
+  return knex.schema.hasTable('build_mod_slots').then(exists => {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE build_mod_slots (

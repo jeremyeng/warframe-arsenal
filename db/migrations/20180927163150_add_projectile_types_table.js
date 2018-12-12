@@ -1,10 +1,8 @@
 exports.up = function addProjectileTypesTableUp(knex) {
-  return knex.schema.hasTable('projectile_types').then((exists) => {
+  return knex.schema.hasTable('projectile_types').then(exists => {
     if (!exists) {
-      return knex.schema.createTable('projectile_types', (table) => {
-        table
-          .string('projectile_type')
-          .primary();
+      return knex.schema.createTable('projectile_types', table => {
+        table.string('projectile_type').primary();
       });
     }
   });
