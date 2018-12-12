@@ -16,6 +16,7 @@
     "test": "jest",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
+    "migrate": "knex-migrate",
     "reset-db": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "keywords": [],
@@ -49,6 +50,7 @@
     "fs-extra": "^7.0.0",
     "graphql": "^0.13.2",
     "knex": "^0.15.2",
+    "knex-migrate": "^1.7.0",
     "lodash": "^4.17.11",
     "node-cmd": "^3.0.0",
     "pg": "^7.6.0",
