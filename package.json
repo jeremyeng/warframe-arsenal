@@ -14,6 +14,8 @@
     "import": "babel-node src/import.js",
     "refresh": "node lib/warframe-items/build/update.js",
     "test": "jest",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "reset-db": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "keywords": [],
