@@ -1,7 +1,10 @@
 exports.up = function addWarframesTableUp(knex) {
-  return knex.schema.hasTable('warframes').then(exists => {
-    if (!exists) {
-      return knex.schema.raw(`
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .hasTable('warframes')
+    .then(exists => {
+      if (!exists) {
+        return knex.schema.withSchema('warframe_arsenal_public').raw(`
         CREATE TABLE warframes (
           buildable_id INTEGER PRIMARY KEY,
           buildable_type TEXT NOT NULL DEFAULT 'Warframe' CHECK (buildable_type = 'Warframe'),
@@ -19,10 +22,12 @@ exports.up = function addWarframesTableUp(knex) {
           FOREIGN KEY (buildable_id, buildable_type) REFERENCES buildables (buildable_id, buildable_type) 
         );
       `);
-    }
-  });
+      }
+    });
 };
 
 exports.down = function addWarframesTableDown(knex) {
-  return knex.schema.dropTableIfExists('warframes');
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .dropTableIfExists('warframes');
 };

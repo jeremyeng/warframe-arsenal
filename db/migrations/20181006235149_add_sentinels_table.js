@@ -1,7 +1,10 @@
 exports.up = function addSentinelsTableUp(knex) {
-  return knex.schema.hasTable('sentinels').then(exists => {
-    if (!exists) {
-      return knex.schema.raw(`
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .hasTable('sentinels')
+    .then(exists => {
+      if (!exists) {
+        return knex.schema.withSchema('warframe_arsenal_public').raw(`
         CREATE TABLE sentinels (
           buildable_id INTEGER PRIMARY KEY,
           buildable_type TEXT NOT NULL DEFAULT 'Sentinel' CHECK (buildable_type = 'Sentinel'),
@@ -16,10 +19,12 @@ exports.up = function addSentinelsTableUp(knex) {
           FOREIGN KEY (buildable_id, buildable_type) REFERENCES buildables (buildable_id, buildable_type) 
         );
       `);
-    }
-  });
+      }
+    });
 };
 
 exports.down = function addSentinelsTableDown(knex) {
-  return knex.schema.dropTableIfExists('sentinels');
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .dropTableIfExists('sentinels');
 };
