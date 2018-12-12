@@ -3,7 +3,7 @@ exports.up = function addSentinelsTableUp(knex) {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE sentinels (
-          buildable_id INTEGER,
+          buildable_id INTEGER PRIMARY KEY,
           buildable_type TEXT NOT NULL DEFAULT 'Sentinel' CHECK (buildable_type = 'Sentinel'),
           sentinel TEXT NOT NULL,
           description TEXT,

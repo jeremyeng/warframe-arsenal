@@ -3,11 +3,9 @@ exports.up = function addValidBuildableModsTableUp(knex) {
     if (!exists) {
       return knex.schema.raw(`
         CREATE TABLE valid_buildable_mods (
-          buildable_id INTEGER NOT NULL,
-          buildable_type TEXT NOT NULL,
+          buildable_id INTEGER NOT NULL REFERENCES buildables (buildable_id),
           mod_id INTEGER NOT NULL REFERENCES mods (mod_id),
-          FOREIGN KEY (buildable_id, buildable_type) REFERENCES buildables (buildable_id, buildable_type), 
-          PRIMARY KEY (buildable_id, buildable_type, mod_id)
+          PRIMARY KEY (buildable_id, mod_id)
         );
       `);
     }

@@ -7,17 +7,15 @@ function linkTableWithModTypes(tableName, modTypes, knex, Promise) {
         .select('buildable_id', 'buildable_type')
         .then(result =>
           Promise.all(
-            result.map(
-              ({ buildable_id: buildableId, buildable_type: buildableType }) =>
-                Promise.all(
-                  modIds.map(({ mod_id: modId }) =>
-                    knex('valid_buildable_mods').insert({
-                      buildable_id: buildableId,
-                      buildable_type: buildableType,
-                      mod_id: modId,
-                    }),
-                  ),
+            result.map(({ buildable_id: buildableId }) =>
+              Promise.all(
+                modIds.map(({ mod_id: modId }) =>
+                  knex('valid_buildable_mods').insert({
+                    buildable_id: buildableId,
+                    mod_id: modId,
+                  }),
                 ),
+              ),
             ),
           ),
         ),
@@ -34,17 +32,15 @@ function linkWeaponTypeWithModTypes(weaponType, modTypes, knex, Promise) {
         .select('buildable_id', 'buildable_type')
         .then(result =>
           Promise.all(
-            result.map(
-              ({ buildable_id: buildableId, buildable_type: buildableType }) =>
-                Promise.all(
-                  modIds.map(({ mod_id: modId }) =>
-                    knex('valid_buildable_mods').insert({
-                      buildable_id: buildableId,
-                      buildable_type: buildableType,
-                      mod_id: modId,
-                    }),
-                  ),
+            result.map(({ buildable_id: buildableId }) =>
+              Promise.all(
+                modIds.map(({ mod_id: modId }) =>
+                  knex('valid_buildable_mods').insert({
+                    buildable_id: buildableId,
+                    mod_id: modId,
+                  }),
                 ),
+              ),
             ),
           ),
         ),
@@ -53,7 +49,7 @@ function linkWeaponTypeWithModTypes(weaponType, modTypes, knex, Promise) {
 
 exports.seed = (knex, Promise) =>
   knex.transaction(trx =>
-    Promise.all(
+    Promise.all([
       linkTableWithModTypes('warframes', ['Warframe'], trx, Promise),
       linkTableWithModTypes('warframes', ['Aura'], trx, Promise),
       linkTableWithModTypes('sentinels', ['Sentinel'], trx, Promise),
@@ -173,5 +169,5 @@ exports.seed = (knex, Promise) =>
       linkWeaponTypeWithModTypes('Whip', ['Melee', 'Whip'], trx, Promise),
       linkWeaponTypeWithModTypes('Arch-Gun', ['Arch-Gun'], trx, Promise),
       linkWeaponTypeWithModTypes('Arch-Melee', ['Arch-Melee'], trx, Promise),
-    ),
+    ]),
   );
