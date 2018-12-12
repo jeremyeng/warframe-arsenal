@@ -18,5 +18,14 @@ module.exports = {
         trailingComma: 'all',
       },
     ],
+    'node/no-unsupported-features/es-syntax': [
+      'error',
+      {
+        ignores: ['modules'],
+      },
+    ],
+  },
+  env: {
+    jest: true,
   },
 };
