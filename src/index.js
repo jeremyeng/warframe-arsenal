@@ -1,26 +1,22 @@
-import 'app-module-path/cwd';
-import express from 'express';
-import cors from 'cors';
-import { ApolloServer } from 'apollo-server-express';
-import schema from 'src/schema';
-import resolvers from 'src/resolvers';
-import knex from 'db/knex';
-import loaders from 'src/loaders';
+const express = require('express');
+const { postgraphile } = require('postgraphile');
 
 const app = express();
-app.use(cors());
 
-const server = new ApolloServer({
-  typeDefs: schema,
-  resolvers,
-  context: {
-    knex,
-    loaders,
-  },
-});
+app.use(
+  postgraphile(
+    process.env.DATABASE_URL || 'postgres:///warframe_arsenal',
+    'public',
+    {
+      graphiql: true,
+    },
+  ),
+);
 
-server.applyMiddleware({ app, path: '/graphql' });
-
-app.listen({ port: 8000 }, () => {
-  console.log('Apollo Server on http://localhost:8000/graphql');
+app.listen({ port: process.env.DATABASE_URL || 8000 }, () => {
+  // eslint-disable-next-line no-console
+  console.log(
+    `Server running on http://localhost:${process.env.DATABASE_URL ||
+      8000}/graphiql`,
+  );
 });
