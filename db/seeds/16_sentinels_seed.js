@@ -2,18 +2,20 @@ const sentinels = require('./seed_data/Sentinels.json');
 
 exports.seed = function seedSentinelsDev(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('sentinels')
+  return knex(knex.ref('sentinels').withSchema('warframe_arsenal_public'))
     .del()
     .then(() =>
       Promise.all(
         sentinels.map(sentinel =>
-          knex('buildables')
+          knex(knex.ref('buildables').withSchema('warframe_arsenal_public'))
             .insert({ buildable_type: 'Sentinel' })
             .returning('buildable_id')
             .then(([buildableId]) =>
-              knex('sentinels').insert({
+              knex(
+                knex.ref('sentinels').withSchema('warframe_arsenal_public'),
+              ).insert({
                 buildable_id: buildableId,
-                sentinel: sentinel.name,
+                sentinel: '',
                 description: sentinel.description,
                 health: sentinel.health,
                 shield: sentinel.shield,

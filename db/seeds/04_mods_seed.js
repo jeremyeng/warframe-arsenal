@@ -6,7 +6,7 @@ exports.seed = function seedModsDev(knex, Promise) {
   return knex.transaction(trx =>
     Promise.all(
       mods.map(mod =>
-        trx('mods')
+        trx(trx.ref('mods').withSchema('warframe_arsenal_public'))
           .del()
           .insert({
             mod: mod.name,

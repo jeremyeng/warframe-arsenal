@@ -4,16 +4,18 @@ exports.seed = function seedWarframesDev(knex, Promise) {
   // Deletes ALL existing entries
 
   return knex.transaction(trx =>
-    trx('warframes')
+    trx(knex.ref('warframes').withSchema('warframe_arsenal_public'))
       .del()
       .then(() =>
         Promise.all(
           warframes.map(warframe =>
-            trx('buildables')
+            trx(knex.ref('buildables').withSchema('warframe_arsenal_public'))
               .insert({ buildable_type: 'Warframe' })
               .returning('buildable_id')
               .then(([buildableId]) =>
-                trx('warframes').insert({
+                trx(
+                  knex.ref('warframes').withSchema('warframe_arsenal_public'),
+                ).insert({
                   buildable_id: buildableId,
                   warframe: warframe.name,
                   description: warframe.description,
