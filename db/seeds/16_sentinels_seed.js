@@ -15,7 +15,7 @@ exports.seed = function seedSentinelsDev(knex, Promise) {
                 knex.ref('sentinels').withSchema('warframe_arsenal_public'),
               ).insert({
                 buildable_id: buildableId,
-                sentinel: '',
+                sentinel: sentinel.name,
                 description: sentinel.description,
                 health: sentinel.health,
                 shield: sentinel.shield,
