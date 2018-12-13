@@ -7,17 +7,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js --exec babel-node",
-    "build": "babel lib -d dist",
-    "serve": "node dist/index.js",
-    "test-server": "NODE_ENV='test' nodemon src/index.js --exec babel-node",
-    "import": "babel-node src/import.js",
-    "refresh": "node lib/warframe-items/build/update.js",
-    "test": "jest",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
     "migrate": "knex-migrate",
-    "reset-db": "knex migrate:rollback && knex migrate:latest && knex seed:run"
+    "refresh": "node lib/warframe-items/build/update.js",
+    "reset-db": "npm run migrate down --to 0 && npm run migrate up --to 0 && knex seed:run",
+    "serve": "node src/index.js",
+    "start": "nodemon src/index.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
