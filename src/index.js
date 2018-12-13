@@ -6,7 +6,7 @@ const app = express();
 app.use(
   postgraphile(
     process.env.DATABASE_URL || 'postgres:///warframe_arsenal',
-    'public',
+    'warframe_arsenal_public',
     {
       graphiql: true,
     },
