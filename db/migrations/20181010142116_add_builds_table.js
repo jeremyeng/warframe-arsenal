@@ -8,7 +8,7 @@ exports.up = function addBuildsTableUp(knex) {
         CREATE TABLE warframe_arsenal_public.builds (
           build_id SERIAL PRIMARY KEY,
           buildable_id INTEGER NOT NULL REFERENCES warframe_arsenal_public.buildables (buildable_id),
-          creation_date TIMESTAMP NOT NULL
+          creation_date TIMESTAMP NOT NULL DEFAULT now()
         );
       `);
       }
