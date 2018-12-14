@@ -1,10 +1,7 @@
 exports.up = function addArchwingsTableUp(knex) {
-  return knex.schema
-    .withSchema('warframe_arsenal_public')
-    .hasTable('archwings')
-    .then(exists => {
-      if (!exists) {
-        return knex.schema.withSchema('warframe_arsenal_public').raw(`
+  return knex.schema.hasTable('archwings').then(exists => {
+    if (!exists) {
+      return knex.schema.raw(`
         CREATE TABLE archwings (
           buildable_id INTEGER PRIMARY KEY,
           buildable_type TEXT NOT NULL DEFAULT 'Archwing' CHECK (buildable_type = 'Archwing'),
@@ -19,12 +16,10 @@ exports.up = function addArchwingsTableUp(knex) {
           FOREIGN KEY (buildable_id, buildable_type) REFERENCES buildables (buildable_id, buildable_type) 
         );
       `);
-      }
-    });
+    }
+  });
 };
 
 exports.down = function addArchwingsTableDown(knex) {
-  return knex.schema
-    .withSchema('warframe_arsenal_public')
-    .dropTableIfExists('archwings');
+  return knex.schema.dropTableIfExists('archwings');
 };

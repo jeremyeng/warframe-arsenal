@@ -2,18 +2,16 @@ const companions = require('./seed_data/Companions.json');
 
 exports.seed = function seedCompanionsDev(knex, Promise) {
   // Deletes ALL existing entries
-  return knex(knex.ref('companions').withSchema('warframe_arsenal_public'))
+  return knex(knex.ref('companions'))
     .del()
     .then(() =>
       Promise.all(
         companions.map(companion =>
-          knex(knex.ref('buildables').withSchema('warframe_arsenal_public'))
+          knex(knex.ref('buildables'))
             .insert({ buildable_type: 'Companion' })
             .returning('buildable_id')
             .then(([buildableId]) =>
-              knex(
-                knex.ref('companions').withSchema('warframe_arsenal_public'),
-              ).insert({
+              knex(knex.ref('companions')).insert({
                 buildable_id: buildableId,
                 companion: companion.name,
                 companion_type: companion.type,

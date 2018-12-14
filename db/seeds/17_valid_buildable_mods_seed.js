@@ -1,20 +1,16 @@
 function linkTableWithModTypes(tableName, modTypes, knex, Promise) {
-  return knex(knex.ref('mods').withSchema('warframe_arsenal_public'))
+  return knex(knex.ref('mods'))
     .whereIn('mod_type', modTypes)
     .select('mod_id')
     .then(modIds =>
-      knex(knex.ref(tableName).withSchema('warframe_arsenal_public'))
+      knex(knex.ref(tableName))
         .select('buildable_id', 'buildable_type')
         .then(result =>
           Promise.all(
             result.map(({ buildable_id: buildableId }) =>
               Promise.all(
                 modIds.map(({ mod_id: modId }) =>
-                  knex(
-                    knex
-                      .ref('valid_buildable_mods')
-                      .withSchema('warframe_arsenal_public'),
-                  ).insert({
+                  knex(knex.ref('valid_buildable_mods')).insert({
                     buildable_id: buildableId,
                     mod_id: modId,
                   }),
@@ -27,11 +23,11 @@ function linkTableWithModTypes(tableName, modTypes, knex, Promise) {
 }
 
 function linkWeaponTypeWithModTypes(weaponType, modTypes, knex, Promise) {
-  return knex(knex.ref('mods').withSchema('warframe_arsenal_public'))
+  return knex(knex.ref('mods'))
     .whereIn('mod_type', modTypes)
     .select('mod_id')
     .then(modIds =>
-      knex(knex.ref('weapons').withSchema('warframe_arsenal_public'))
+      knex(knex.ref('weapons'))
         .where({ weapon_type: weaponType })
         .select('buildable_id', 'buildable_type')
         .then(result =>
@@ -39,11 +35,7 @@ function linkWeaponTypeWithModTypes(weaponType, modTypes, knex, Promise) {
             result.map(({ buildable_id: buildableId }) =>
               Promise.all(
                 modIds.map(({ mod_id: modId }) =>
-                  knex(
-                    knex
-                      .ref('valid_buildable_mods')
-                      .withSchema('warframe_arsenal_public'),
-                  ).insert({
+                  knex(knex.ref('valid_buildable_mods')).insert({
                     buildable_id: buildableId,
                     mod_id: modId,
                   }),

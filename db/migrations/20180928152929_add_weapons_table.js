@@ -1,10 +1,7 @@
 exports.up = function addWeaponsTableUp(knex) {
-  return knex.schema
-    .withSchema('warframe_arsenal_public')
-    .hasTable('weapons')
-    .then(exists => {
-      if (!exists) {
-        return knex.schema.withSchema('warframe_arsenal_public').raw(`
+  return knex.schema.hasTable('weapons').then(exists => {
+    if (!exists) {
+      return knex.schema.raw(`
         CREATE TABLE weapons (
           buildable_id INTEGER,
           buildable_type TEXT NOT NULL DEFAULT 'Weapon' CHECK (buildable_type='Weapon'),
@@ -56,12 +53,10 @@ exports.up = function addWeaponsTableUp(knex) {
           FOREIGN KEY (buildable_id, buildable_type) REFERENCES buildables (buildable_id, buildable_type) 
         );
       `);
-      }
-    });
+    }
+  });
 };
 
 exports.down = function addWeaponsTableDown(knex) {
-  return knex.schema
-    .withSchema('warframe_arsenal_public')
-    .dropTableIfExists('weapons');
+  return knex.schema.dropTableIfExists('weapons');
 };
