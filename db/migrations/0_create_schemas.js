@@ -3,6 +3,7 @@ exports.up = function(knex) {
     CREATE SCHEMA warframe_arsenal_public;
     CREATE SCHEMA warframe_arsenal_private;
     SET search_path TO warframe_arsenal_public, public;
+    ALTER DEFAULT privileges REVOKE EXECUTE ON functions FROM public;
   `);
 };
 
