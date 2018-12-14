@@ -1,34 +1,30 @@
 exports.up = function addModsTableUp(knex) {
-  return knex.schema.hasTable('mods').then(exists => {
-    if (!exists) {
-      return knex.schema.createTable('mods', table => {
-        table.increments('mod_id').primary();
-        table
-          .string('mod')
-          .notNullable()
-          .unique();
-        table.text('description');
-        table.integer('base_drain').notNullable();
-        table.integer('fusion_limit').notNullable();
-        table.jsonb('data');
-        table
-          .string('mod_type')
-          .notNullable()
-          .references('mod_type')
-          .inTable('mod_types')
-          .onUpdate('CASCADE');
-        table.string('image_name');
-        table
-          .string('polarity')
-          .notNullable()
-          .references('polarity')
-          .inTable('polarities')
-          .onUpdate('CASCADE');
-      });
-    }
-  });
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .hasTable('mods')
+    .then(exists => {
+      if (!exists) {
+        return knex.schema.raw(
+          `
+            CREATE TABLE warframe_arsenal_public.mods (
+              mod_id SERIAL PRIMARY KEY,
+              mod TEXT NOT NULL UNIQUE,
+              mod_type TEXT NOT NULL REFERENCES warframe_arsenal_public.mod_types(mod_type) ON UPDATE CASCADE,
+              polarity TEXT NOT NULL REFERENCES warframe_arsenal_public.polarities(polarity) ON UPDATE CASCADE,
+              description TEXT,
+              base_drain INTEGER NOT NULL,
+              fusion_limit INTEGER NOT NULL,
+              data JSONB,
+              image_name TEXT
+            );
+          `,
+        );
+      }
+    });
 };
 
 exports.down = function addModsTableDown(knex) {
-  return knex.schema.dropTableIfExists('mods');
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .dropTableIfExists('mods');
 };

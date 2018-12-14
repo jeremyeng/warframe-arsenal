@@ -8,7 +8,6 @@ module.exports = {
     seeds: {
       directory: `${__dirname}/db/seeds`,
     },
-    searchPath: ['warframe_arsenal_public', 'public'],
   },
   development: {
     client: 'pg',
@@ -19,7 +18,6 @@ module.exports = {
     seeds: {
       directory: `${__dirname}/db/seeds`,
     },
-    searchPath: ['warframe_arsenal_public', 'public'],
   },
   production: {
     client: 'pg',
@@ -30,6 +28,5 @@ module.exports = {
     seeds: {
       directory: `${__dirname}/db/seeds/production`,
     },
-    searchPath: ['warframe_arsenal_public', 'public'],
   },
 };

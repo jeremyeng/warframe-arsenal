@@ -1,17 +1,20 @@
 exports.up = function addWeaponsTableUp(knex) {
-  return knex.schema.hasTable('weapons').then(exists => {
-    if (!exists) {
-      return knex.schema.raw(`
-        CREATE TABLE weapons (
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .hasTable('weapons')
+    .then(exists => {
+      if (!exists) {
+        return knex.schema.raw(`
+        CREATE TABLE warframe_arsenal_public.weapons (
           buildable_id INTEGER,
           buildable_type TEXT NOT NULL DEFAULT 'Weapon' CHECK (buildable_type='Weapon'),
           weapon TEXT,
           description TEXT,
-          weapon_type TEXT REFERENCES weapon_types (weapon_type),
-          weapon_category TEXT REFERENCES weapon_categories (weapon_category),
-          projectile_type TEXT REFERENCES projectile_types (projectile_type),
-          trigger_type TEXT REFERENCES trigger_types (trigger_type),
-          noise_type TEXT REFERENCES noise_types (noise_type),
+          weapon_type TEXT REFERENCES warframe_arsenal_public.weapon_types (weapon_type),
+          weapon_category TEXT REFERENCES warframe_arsenal_public.weapon_categories (weapon_category),
+          projectile_type TEXT REFERENCES warframe_arsenal_public.projectile_types (projectile_type),
+          trigger_type TEXT REFERENCES warframe_arsenal_public.trigger_types (trigger_type),
+          noise_type TEXT REFERENCES warframe_arsenal_public.noise_types (noise_type),
           seconds_per_shot DECIMAL,
           magazine_size INTEGER,
           ammo INTEGER,
@@ -50,13 +53,15 @@ exports.up = function addWeaponsTableUp(knex) {
           secondary JSONB,
           wikia_thumbnail TEXT,
           wikia_url TEXT,
-          FOREIGN KEY (buildable_id, buildable_type) REFERENCES buildables (buildable_id, buildable_type) 
+          FOREIGN KEY (buildable_id, buildable_type) REFERENCES warframe_arsenal_public.buildables (buildable_id, buildable_type) 
         );
       `);
-    }
-  });
+      }
+    });
 };
 
 exports.down = function addWeaponsTableDown(knex) {
-  return knex.schema.dropTableIfExists('weapons');
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .dropTableIfExists('weapons');
 };

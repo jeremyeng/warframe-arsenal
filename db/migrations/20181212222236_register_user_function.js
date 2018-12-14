@@ -1,7 +1,6 @@
 exports.up = function(knex) {
-  return knex.schema
-    .raw(
-      `
+  return knex.schema.raw(
+    `
         CREATE FUNCTION warframe_arsenal_public.register_user (username text, email text, password text)
             RETURNS warframe_arsenal_public.users
         AS $$
@@ -20,21 +19,7 @@ exports.up = function(knex) {
         LANGUAGE plpgsql STRICT
         SECURITY DEFINER;
       `,
-    )
-    .then(() =>
-      knex.schema.raw(
-        `
-        DO $$
-        BEGIN
-            IF EXISTS (SELECT 1 FROM  pg_proc WHERE proname = 'warframe_arsenal_public.register_user') THEN
-                COMMENT ON FUNCTION warframe_arsenal_public.register_user (text, text, text, text)
-                IS 'Registers a single user and creates an account.';
-            END IF;
-        END;
-        $$;
-        `,
-      ),
-    );
+  );
 };
 
 exports.down = function(knex) {

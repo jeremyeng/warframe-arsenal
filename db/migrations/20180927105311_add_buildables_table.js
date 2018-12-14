@@ -1,19 +1,24 @@
 exports.up = function addBuildablesTableUp(knex) {
-  return knex.schema.hasTable('buildables').then(exists => {
-    if (!exists) {
-      return knex.schema.createTable('buildables', table => {
-        table.increments('buildable_id').primary();
-        table
-          .string('buildable_type')
-          .references('buildable_type')
-          .inTable('buildable_types')
-          .onUpdate('CASCADE');
-        table.unique(['buildable_id', 'buildable_type']);
-      });
-    }
-  });
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .hasTable('buildables')
+    .then(exists => {
+      if (!exists) {
+        return knex.raw(
+          `
+            CREATE TABLE warframe_arsenal_public.buildables (
+              buildable_id SERIAL PRIMARY KEY,
+              buildable_type TEXT REFERENCES warframe_arsenal_public.buildable_types (buildable_type),
+              UNIQUE (buildable_id, buildable_type)
+            );
+          `,
+        );
+      }
+    });
 };
 
 exports.down = function addBuildablesTableDown(knex) {
-  return knex.schema.dropTableIfExists('buildables');
+  return knex.schema
+    .withSchema('warframe_arsenal_public')
+    .dropTableIfExists('buildables');
 };
