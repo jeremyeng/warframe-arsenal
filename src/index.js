@@ -5,10 +5,14 @@ const app = express();
 
 app.use(
   postgraphile(
-    process.env.DATABASE_URL || 'postgres:///warframe_arsenal',
+    { connectionString: 'postgres:///warframe_arsenal' },
     'warframe_arsenal_public',
     {
       graphiql: true,
+      pgDefaultRole: 'jeremy',
+      jwtPgTypeIdentifier: 'warframe_arsenal_public.jwt',
+      jwtSecret:
+        '29E357812E4D2664C6FD9764D28B9BA958CC995D216C0C8A837039D7C6B43FD0',
     },
   ),
 );
