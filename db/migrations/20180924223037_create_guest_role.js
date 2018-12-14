@@ -4,6 +4,7 @@ exports.up = function(knex) {
     CREATE ROLE guest; 
     GRANT guest TO postgraphile;
     GRANT usage ON SCHEMA warframe_arsenal_public TO guest;
+    REVOKE ALL ON SCHEMA PUBLIC from guest;
     `,
   );
 };
