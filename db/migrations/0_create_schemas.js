@@ -8,7 +8,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.raw(`
-    DROP SCHEMA warframe_arsenal_public;
-    DROP SCHEMA warframe_arsenal_private;
+    DROP SCHEMA warframe_arsenal_public CASCADE;
+    DROP SCHEMA warframe_arsenal_private CASCADE;
   `);
 };
