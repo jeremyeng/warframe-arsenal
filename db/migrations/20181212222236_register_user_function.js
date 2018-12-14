@@ -13,7 +13,7 @@ exports.up = function(knex) {
     
             INSERT INTO warframe_arsenal_private.user_accounts (user_id, email, password_hash)
             VALUES (warframe_arsenal_user.user_id, email, crypt(password, gen_salt('bf')));
-            RETURN user;
+            RETURN warframe_arsenal_user;
         END;
         $$
         LANGUAGE plpgsql STRICT
