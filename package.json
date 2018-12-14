@@ -7,7 +7,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint",
     "migrate": "knex-migrate",
     "refresh": "node lib/warframe-items/build/update.js",
     "reset-db": "npm run migrate down --to 0 && npm run migrate up --to 0 && knex seed:run",
