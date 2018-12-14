@@ -6,14 +6,14 @@ exports.up = function(knex) {
             RETURNS warframe_arsenal_public.users
         AS $$
         DECLARE
-            user warframe_arsenal_public.users;
+            warframe_arsenal_user warframe_arsenal_public.users;
         BEGIN
             INSERT INTO warframe_arsenal_public.users (username)
             VALUES (username)
-            RETURNING * INTO user;
+            RETURNING * INTO warframe_arsenal_user;
     
-            INSERT INTO warframe_arsenal_private.user_account (user_id, email, password_hash)
-            VALUES (users.user_id, email, crypt(password, gen_salt('bf')));
+            INSERT INTO warframe_arsenal_private.user_accounts (user_id, email, password_hash)
+            VALUES (warframe_arsenal_user.user_id, email, crypt(password, gen_salt('bf')));
             RETURN user;
         END;
         $$
