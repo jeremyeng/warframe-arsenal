@@ -17,8 +17,8 @@ exports.up = function addBuildsTableUp(knex) {
       knex.schema.raw(
         `
           GRANT SELECT ON TABLE warframe_arsenal_public.builds TO guest, registered_user, admin;
-          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.builds TO admin;
-          GRANT USAGE ON SEQUENCE warframe_arsenal_public.builds_build_id_seq TO admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.builds TO registered_user, admin;
+          GRANT USAGE ON SEQUENCE warframe_arsenal_public.builds_build_id_seq TO registered_user, admin;
         `,
       ),
     );
