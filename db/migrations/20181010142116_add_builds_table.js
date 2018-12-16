@@ -12,7 +12,16 @@ exports.up = function addBuildsTableUp(knex) {
         );
       `);
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.builds TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.builds TO admin;
+          GRANT USAGE ON SEQUENCE warframe_arsenal_public.builds_build_id_seq TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addBuildsTableDown(knex) {

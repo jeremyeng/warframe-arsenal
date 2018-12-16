@@ -39,6 +39,13 @@ exports.up = function(knex) {
         $$;
         `,
       ),
+    )
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT EXECUTE on FUNCTION warframe_arsenal_public.authenticate(TEXT, TEXT) TO guest, registered_user, admin;
+        `,
+      ),
     );
 };
 

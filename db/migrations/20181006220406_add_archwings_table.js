@@ -20,7 +20,15 @@ exports.up = function addArchwingsTableUp(knex) {
         );
       `);
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.archwings TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.archwings TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addArchwingsTableDown(knex) {

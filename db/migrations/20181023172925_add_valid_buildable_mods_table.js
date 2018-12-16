@@ -12,7 +12,15 @@ exports.up = function addValidBuildableModsTableUp(knex) {
         );
       `);
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.valid_buildable_mods TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.valid_buildable_mods TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addValidBuildableModsTableDown(knex) {

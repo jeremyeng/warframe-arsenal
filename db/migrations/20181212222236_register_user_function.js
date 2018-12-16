@@ -1,6 +1,7 @@
 exports.up = function(knex) {
-  return knex.schema.raw(
-    `
+  return knex.schema
+    .raw(
+      `
         CREATE FUNCTION warframe_arsenal_public.register_user (username text, email text, password text)
             RETURNS warframe_arsenal_public.users
         AS $$
@@ -19,7 +20,14 @@ exports.up = function(knex) {
         LANGUAGE plpgsql STRICT
         SECURITY DEFINER;
       `,
-  );
+    )
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT EXECUTE on FUNCTION warframe_arsenal_public.register_user(TEXT, TEXT, TEXT) TO guest;
+        `,
+      ),
+    );
 };
 
 exports.down = function(knex) {

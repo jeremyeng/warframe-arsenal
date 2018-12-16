@@ -10,7 +10,15 @@ exports.up = function addNoiseTypesTableUp(knex) {
             table.string('noise_type').primary();
           });
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.noise_types TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.noise_types TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addNoiseTypesTableDown(knex) {

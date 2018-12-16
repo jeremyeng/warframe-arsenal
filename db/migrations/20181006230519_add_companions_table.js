@@ -21,7 +21,15 @@ exports.up = function addCompanionsTableUp(knex) {
         );
       `);
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.companions TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.companions TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addCompanionsTableDown(knex) {

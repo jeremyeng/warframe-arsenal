@@ -14,7 +14,16 @@ exports.up = function addBuildablesTableUp(knex) {
           `,
         );
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.buildables TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.buildables TO admin;
+          GRANT USAGE ON SEQUENCE warframe_arsenal_public.buildables_buildable_id_seq TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addBuildablesTableDown(knex) {

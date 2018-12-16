@@ -10,7 +10,15 @@ exports.up = function addBuildableTypesTableUp(knex) {
             table.string('buildable_type').primary();
           });
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.buildable_types TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.buildable_types TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addBuildableTypesTableDown(knex) {

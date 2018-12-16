@@ -13,7 +13,15 @@ exports.up = function addModTypesTableUp(knex) {
               .primary();
           });
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.mod_types TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.mod_types TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addModTypesTableDown(knex) {

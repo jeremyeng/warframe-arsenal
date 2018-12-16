@@ -10,7 +10,15 @@ exports.up = function addWeaponTypesTableUp(knex) {
             table.string('weapon_type').primary();
           });
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.weapon_types TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.weapon_types TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addWeaponTypesTableDown(knex) {

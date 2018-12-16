@@ -23,7 +23,15 @@ exports.up = function addWarframesTableUp(knex) {
         );
       `);
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.warframes TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.warframes TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addWarframesTableDown(knex) {

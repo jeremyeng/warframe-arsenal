@@ -10,7 +10,15 @@ exports.up = function addProjectileTypesTableUp(knex) {
             table.string('projectile_type').primary();
           });
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.projectile_types TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.projectile_types TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addProjectileTypesTableDown(knex) {

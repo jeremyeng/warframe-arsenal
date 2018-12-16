@@ -15,7 +15,16 @@ exports.up = function addBuildModSlotsTableUp(knex) {
         );
       `);
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.build_mod_slots TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.build_mod_slots TO admin;
+          GRANT USAGE ON SEQUENCE warframe_arsenal_public.build_mod_slots_build_mod_slot_id_seq TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addBuildModSlotsTableDown(knex) {

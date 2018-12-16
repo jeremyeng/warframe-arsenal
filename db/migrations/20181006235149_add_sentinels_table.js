@@ -20,7 +20,15 @@ exports.up = function addSentinelsTableUp(knex) {
         );
       `);
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.sentinels TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.sentinels TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addSentinelsTableDown(knex) {

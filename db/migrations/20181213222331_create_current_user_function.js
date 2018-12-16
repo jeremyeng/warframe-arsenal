@@ -1,6 +1,7 @@
 exports.up = function(knex) {
-  return knex.schema.raw(
-    `
+  return knex.schema
+    .raw(
+      `
       CREATE FUNCTION warframe_arsenal_public.current_user ()
           RETURNS warframe_arsenal_public.users
       AS $$
@@ -13,7 +14,14 @@ exports.up = function(knex) {
       $$
       LANGUAGE sql STABLE;
       `,
-  );
+    )
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT EXECUTE on FUNCTION warframe_arsenal_public.current_user() TO guest, registered_user, admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function(knex) {

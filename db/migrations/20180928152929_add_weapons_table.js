@@ -57,7 +57,15 @@ exports.up = function addWeaponsTableUp(knex) {
         );
       `);
       }
-    });
+    })
+    .then(() =>
+      knex.schema.raw(
+        `
+          GRANT SELECT ON TABLE warframe_arsenal_public.weapons TO guest, registered_user, admin;
+          GRANT INSERT, UPDATE, DELETE ON TABLE warframe_arsenal_public.weapons TO admin;
+        `,
+      ),
+    );
 };
 
 exports.down = function addWeaponsTableDown(knex) {
