@@ -9,7 +9,8 @@ app.use(
     'warframe_arsenal_public',
     {
       graphiql: true,
-      pgDefaultRole: 'jeremy',
+      watchPg: true,
+      pgDefaultRole: 'registered_user',
       jwtPgTypeIdentifier: 'warframe_arsenal_public.jwt',
       jwtSecret:
         '29E357812E4D2664C6FD9764D28B9BA958CC995D216C0C8A837039D7C6B43FD0',
