@@ -5,7 +5,11 @@ const app = express();
 
 app.use(
   postgraphile(
-    { connectionString: 'postgres:///warframe_arsenal' },
+    {
+      host: process.env.DATABASE_URL,
+      database: process.env.DATABASE_NAME,
+      password: process.env.DATABASE_PASSWORD,
+    },
     'warframe_arsenal_public',
     {
       graphiql: true,
@@ -18,10 +22,9 @@ app.use(
   ),
 );
 
-app.listen({ port: process.env.DATABASE_URL || 8000 }, () => {
+app.listen({ port: 8000 }, () => {
   // eslint-disable-next-line no-console
   console.log(
-    `Server running on http://localhost:${process.env.DATABASE_URL ||
-      8000}/graphiql`,
+    `Server running on http://localhost:8000/graphiql`,
   );
 });
