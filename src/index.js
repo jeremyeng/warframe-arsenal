@@ -22,9 +22,9 @@ app.use(
   ),
 );
 
-app.listen({ port: 8000 }, () => {
+app.listen({ port: process.env.PORT || 8081 }, () => {
   // eslint-disable-next-line no-console
   console.log(
-    `Server running on http://localhost:8000/graphiql`,
+    `Server running on http://localhost:${process.env.PORT || 8081}/graphiql`,
   );
 });
