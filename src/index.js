@@ -14,7 +14,6 @@ app.use(
     'warframe_arsenal_public',
     {
       graphiql: true,
-      watchPg: true,
       pgDefaultRole: 'registered_user',
       jwtPgTypeIdentifier: 'warframe_arsenal_public.jwt',
       jwtSecret:
