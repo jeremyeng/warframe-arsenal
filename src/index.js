@@ -8,8 +8,8 @@ app.use(
     {
       host: process.env.DATABASE_URL,
       database: process.env.DATABASE_NAME,
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
+      user: process.env.POSTGRAPHILE_DATABASE_USER,
+      password: process.env.POSTGRAPHILE_DATABASE_PASSWORD,
     },
     'warframe_arsenal_public',
     {
