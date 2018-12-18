@@ -13,9 +13,9 @@ async function resetDb() {
 }
 
 async function startServer() {
-  if (process.env.NODE_ENV === 'production') {
-    await resetDb();
-  }
+  // if (process.env.NODE_ENV === 'production') {
+  await resetDb();
+  // }
 
   const app = express();
   app.use(
