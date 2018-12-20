@@ -9,6 +9,7 @@ async function resetDb() {
   };
 
   await knexMigrate('down', { to: 0 }, log);
+  await knexMigrate('up', {}, log);
 }
 
 async function startServer() {
