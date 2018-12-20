@@ -2,20 +2,17 @@ const express = require('express');
 const { postgraphile } = require('postgraphile');
 const knexMigrate = require('knex-migrate');
 
-async function resetDb() {
-  const log = ({ action, migration }) => {
-    // eslint-disable-next-line no-console
-    console.log('Doing ' + action + ' on ' + migration);
-  };
+const log = ({ action, migration }) => {
+  // eslint-disable-next-line no-console
+  console.log('Doing ' + action + ' on ' + migration);
+};
 
-  await knexMigrate('down', { to: 0 }, log);
+async function migrateUpToLatest() {
   await knexMigrate('up', {}, log);
 }
 
 async function startServer() {
-  // if (process.env.NODE_ENV === 'production') {
-  await resetDb();
-  // }
+  migrateUpToLatest();
 
   const app = express();
   app.use(
