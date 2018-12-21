@@ -3,7 +3,7 @@ exports.up = function(knex) {
     .withSchema('warframe_arsenal_public')
     .createTable('users', function(table) {
       table.increments('user_id').primary();
-      table.string('username').notNullable();
+      table.string('username').notNullable().unique();
     })
     .then(() =>
       knex.schema.raw(
