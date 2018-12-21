@@ -15,16 +15,18 @@ const weapons = primaries
 exports.seed = function seedWeaponsDev(knex, Promise) {
   // Deletes ALL existing entries
   return knex.transaction(trx =>
-    trx(trx.ref('weapons'))
+    trx(trx.ref('weapons').withSchema('warframe_arsenal_public'))
       .del()
       .then(() =>
         Promise.all(
           weapons.map(weapon =>
-            trx(trx.ref('buildables'))
+            trx(trx.ref('buildables').withSchema('warframe_arsenal_public'))
               .insert({ buildable_type: 'Weapon' })
               .returning('buildable_id')
               .then(([buildableId]) =>
-                trx(trx.ref('weapons')).insert({
+                trx(
+                  trx.ref('weapons').withSchema('warframe_arsenal_public'),
+                ).insert({
                   buildable_id: buildableId,
                   weapon: weapon.name,
                   description: weapon.description,
