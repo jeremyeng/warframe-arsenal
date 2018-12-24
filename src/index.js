@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { postgraphile } = require('postgraphile');
 const knexMigrate = require('knex-migrate');
