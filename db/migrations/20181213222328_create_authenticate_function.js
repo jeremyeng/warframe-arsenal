@@ -16,7 +16,14 @@ exports.up = function(knex) {
               a.email = $1;
               
           IF account.password_hash = crypt(password, account.password_hash) THEN
-              RETURN ('registered_user', account.user_id)::warframe_arsenal_public.jwt;
+              RETURN 
+                (
+                  'registered_user',
+                   account.user_id,
+                   account.is_admin,
+                   account.confirmed,
+                   extract(epoch from now() + interval '7 days')
+                )::warframe_arsenal_public.jwt;
           ELSE
               RETURN NULL;
           END IF;

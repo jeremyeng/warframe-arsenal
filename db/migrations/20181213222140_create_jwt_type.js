@@ -2,8 +2,11 @@ exports.up = function(knex) {
   return knex.schema.raw(
     `
     CREATE TYPE warframe_arsenal_public.jwt AS (
-        ROLE text,
-        user_id integer
+        ROLE TEXT,
+        user_id INTEGER,
+        is_admin BOOLEAN,
+        confirmed BOOLEAN,
+        exp INTEGER
     );
     `,
   );
