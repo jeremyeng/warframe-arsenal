@@ -9,6 +9,7 @@ const log = ({ action, migration }) => {
 };
 
 async function migrateUpToLatest() {
+  await knexMigrate('down', { to: 0 }, log);
   await knexMigrate('up', {}, log);
 }
 
