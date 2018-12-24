@@ -16,7 +16,7 @@ exports.up = function(knex) {
               a.email = $1;
               
           IF account.password_hash = crypt(password, account.password_hash) THEN
-              RETURN ('warframe_arsenal_user', account.user_id)::warframe_arsenal_public.jwt;
+              RETURN ('registered_user', account.user_id)::warframe_arsenal_public.jwt;
           ELSE
               RETURN NULL;
           END IF;
