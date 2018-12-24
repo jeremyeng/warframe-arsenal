@@ -6,6 +6,7 @@ exports.up = function(knex) {
       email TEXT NOT NULL UNIQUE CHECK (email ~* '^.+@.+\..+$'),
       password_hash TEXT NOT NULL,
       confirmed BOOLEAN NOT NULL DEFAULT FALSE,
+      is_admin BOOLEAN NOT NULL DEFAULT FALSE,
       registration_date TIMESTAMP NOT NULL DEFAULT now()
     );
     `);

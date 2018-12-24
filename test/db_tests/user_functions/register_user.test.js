@@ -25,5 +25,6 @@ describe('register_user function', () => {
     expect(createdUser.username).toBe(user.username);
     expect(createdUserAccount.email).toBe(user.email);
     expect(createdUserAccount.confirmed === false);
+    expect(createdUserAccount.is_admin === false);
   });
 });
