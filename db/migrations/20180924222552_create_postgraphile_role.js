@@ -1,5 +1,5 @@
 exports.up = function(knex) {
-  return knex.schema.raw(`CREATE ROLE postgraphile LOGIN`);
+  return knex.schema.raw(`CREATE ROLE postgraphile LOGIN PASSWORD 'tenno'`);
 };
 
 exports.down = function(knex) {
