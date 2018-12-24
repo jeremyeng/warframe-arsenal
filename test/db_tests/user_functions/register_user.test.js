@@ -21,7 +21,9 @@ describe('register_user function', () => {
       knex.ref('user_accounts').withSchema('warframe_arsenal_private'),
     ).first();
 
+    expect(createdUser.user_id === createdUserAccount.user_id);
     expect(createdUser.username).toBe(user.username);
     expect(createdUserAccount.email).toBe(user.email);
+    expect(createdUserAccount.confirmed === false);
   });
 });

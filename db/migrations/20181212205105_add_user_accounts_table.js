@@ -5,6 +5,7 @@ exports.up = function(knex) {
       user_id INTEGER PRIMARY KEY REFERENCES warframe_arsenal_public.users(user_id) ON DELETE CASCADE,
       email TEXT NOT NULL UNIQUE CHECK (email ~* '^.+@.+\..+$'),
       password_hash TEXT NOT NULL,
+      confirmed BOOLEAN NOT NULL DEFAULT FALSE,
       registration_date TIMESTAMP NOT NULL DEFAULT now()
     );
     `);
