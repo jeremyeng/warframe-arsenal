@@ -1,7 +1,7 @@
 module.exports = {
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/warframe_arsenal_test',
+    connection: 'postgres://localhost/warframe_arsenal',
     migrations: {
       directory: `${__dirname}/db/migrations`,
     },
