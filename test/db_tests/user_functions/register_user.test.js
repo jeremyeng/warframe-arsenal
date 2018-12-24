@@ -16,12 +16,12 @@ describe('register_user function', () => {
 
     const createdUser = await knex(
       knex.ref('users').withSchema('warframe_arsenal_public'),
-    );
+    ).first();
     const createdUserAccount = await knex(
       knex.ref('user_accounts').withSchema('warframe_arsenal_private'),
-    );
+    ).first();
 
-    expect(createdUser[0].username).toBe(user.username);
-    expect(createdUserAccount[0].email).toBe(user.email);
+    expect(createdUser.username).toBe(user.username);
+    expect(createdUserAccount.email).toBe(user.email);
   });
 });
