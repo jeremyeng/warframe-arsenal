@@ -14,7 +14,7 @@ async function migrateUpToLatest() {
 }
 
 async function startServer() {
-  migrateUpToLatest();
+  await migrateUpToLatest();
 
   const app = express();
   app.use(
