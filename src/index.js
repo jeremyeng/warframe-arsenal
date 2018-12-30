@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const { postgraphile } = require('postgraphile');
 const knexMigrate = require('knex-migrate');
+const knex = require('../db/knex');
 
 const log = ({ action, migration }) => {
   // eslint-disable-next-line no-console
@@ -11,6 +12,7 @@ const log = ({ action, migration }) => {
 async function migrateUpToLatest() {
   await knexMigrate('down', { to: 0 }, log);
   await knexMigrate('up', {}, log);
+  await knex.seed.run();
 }
 
 async function startServer() {
