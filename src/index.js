@@ -29,8 +29,6 @@ async function startServer() {
       },
       'warframe_arsenal_public',
       {
-        graphiql: true,
-        enhanceGraphiql: true,
         pgDefaultRole: 'guest',
         jwtPgTypeIdentifier: 'warframe_arsenal_public.jwt',
         jwtSecret:
