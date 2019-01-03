@@ -51,7 +51,7 @@ exports.up = function addWeaponsTableUp(knex) {
           riven_disposition INTEGER,
           channeling DECIMAL,
           secondary JSONB,
-          wikia_thumbnail TEXT,
+          image_name TEXT,
           wikia_url TEXT,
           FOREIGN KEY (buildable_id, buildable_type) REFERENCES warframe_arsenal_public.buildables (buildable_id, buildable_type) 
         );

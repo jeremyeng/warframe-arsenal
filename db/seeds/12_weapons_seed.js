@@ -71,7 +71,7 @@ exports.seed = function seedWeaponsDev(knex, Promise) {
                   projectile_type: weapon.projectile,
                   vaulted: weapon.vaulted,
                   secondary: weapon.secondary || weapon.secondaryArea,
-                  imageName: weapon.imageName,
+                  image_name: weapon.imageName,
                   wikia_url: weapon.wikiaUrl,
                 }),
               ),
