@@ -3,6 +3,7 @@ const express = require('express');
 const { postgraphile } = require('postgraphile');
 const knexMigrate = require('knex-migrate');
 const knex = require('../db/knex');
+const cors = require('cors');
 
 const log = ({ action, migration }) => {
   // eslint-disable-next-line no-console
@@ -19,6 +20,7 @@ async function startServer() {
   await migrateUpToLatest();
 
   const app = express();
+  app.use(cors());
   app.use(
     postgraphile(
       {
